@@ -27,6 +27,12 @@ set expandtab
 set number
 set mouse=a
 
-" to respect the coding style of EPITA
+" to automatically include "#!/bin/sh" in .sh files
+autocmd BufNewFile *.sh norm i#!/bin/sh
+
+" to automatically include "#include <stdio.h> and a empty main with return 0" for .c files
+autocmd BufNewFile *c norm i#include <stdio.h>\nint main(void)\n{\nreturn 0;\n}\n
+
+" to respect EPITA coding style
 set cc=80
 set list listchars=tab:»·,trail:·
