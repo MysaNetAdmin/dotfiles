@@ -33,6 +33,18 @@ autocmd BufNewFile *.sh norm i#!/bin/sh
 " to automatically include "#include <stdio.h> and a empty main with return 0" for .c files
 autocmd BufNewFile *c norm i#include <stdio.h>\nint main(void)\n{\nreturn 0;\n}\n
 
+"Use TAB to complete when typing words, else inserts TABs as usual.
+"Uses dictionary and source files to find matching words to complete.
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+:set dictionary="/usr/dict/words"
+
 " to respect EPITA coding style
 set cc=80
 set list listchars=tab:»·,trail:·
