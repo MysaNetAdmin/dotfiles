@@ -28,10 +28,22 @@ set smartindent
 set autoindent
 set cindent
 set shiftround
+set copyindent
 
 
 set number
 set mouse=a
+
+" Select all text
+nmap <C-a> ggVG
+
+" normal copy/paste
+vmap <C-c> y<Esc>i
+vmap <C-x> d<Esc>i
+imap <C-v> <Esc>pi
+imap <C-y> <Esc>ddi
+map <C-z> <Esc>
+imap <C-z> <Esc>ui
 
 " to automatically include "#!/bin/sh" in .sh files
 autocmd BufNewFile *.sh norm i#!/bin/sh
