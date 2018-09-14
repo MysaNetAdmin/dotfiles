@@ -8,12 +8,13 @@ export NNTPSERVER="news.epita.fr"
 export EDITOR=vim
 
 # Aliases
-alias ls='ls --color=auto'
+alias ls='ls --color'
 alias grep='grep --color -n'
+
+LS_COLORS="di=1;31"
+export LS_COLORS
 
 # Stored old PS1 in case I might want it
 # PS1='[\u@\h \W]\$ '
 
-PS1='[Mysa: \W]\$ '
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/samy.hussaein/.vimpkg/bin"
+PS1='[mysa: \w]\$ '
