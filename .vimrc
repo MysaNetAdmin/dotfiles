@@ -16,7 +16,7 @@ syntax on
 
 " All of your Plugins must be added before the following line
 " call vundle#end()            " required
-" filetype plugin indent on    " required for plugins
+filetype plugin indent on    " required for plugins
 
 " configure tab to be 2 spaces
 set tabstop=2
@@ -24,14 +24,20 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
+set smartindent
+set autoindent
+set cindent
+set shiftround
+
+
 set number
 set mouse=a
 
 " to automatically include "#!/bin/sh" in .sh files
 autocmd BufNewFile *.sh norm i#!/bin/sh
 
-" to automatically include "#include <stdio.h> and a empty main with return 0" for .c files
-autocmd BufNewFile *c norm i#include <stdio.h>\nint main(void)\n{\nreturn 0;\n}\n
+" to automatically include "#include <stdio.h>" for .c files
+autocmd BufNewFile *c norm i#include <stdio.h>
 
 "Use TAB to complete when typing words, else inserts TABs as usual.
 "Uses dictionary and source files to find matching words to complete.
@@ -46,5 +52,8 @@ endfunction
 :set dictionary="/usr/dict/words"
 
 " to respect EPITA coding style
-set cc=80
 set list listchars=tab:»·,trail:·
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+highlight MaxLength ctermbg=red guibg=red
+2mat MaxLength /\%81v./
