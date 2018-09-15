@@ -45,11 +45,19 @@ imap <C-y> <Esc>ddi
 map <C-z> <Esc>
 imap <C-z> <Esc>ui
 
-" to automatically include "#!/bin/sh" in .sh files
+" Automatically include "#!/bin/sh" in .sh files
 autocmd BufNewFile *.sh norm i#!/bin/sh
 
-" to automatically include "#include <stdio.h>" for .c files
-autocmd BufNewFile *c norm i#include <stdio.h>
+" Automatically include default libs and main for .c files
+autocmd BufNewFile *c call append(0,"# include <stdio.h>")
+autocmd BufNewFile *c call append(1,"# include <stdlib.h>")
+autocmd BufNewFile *c call append(2,"")
+autocmd BufNewFile *c call append(3,"")
+autocmd BufNewFile *c call append(4,"int main(int argc, char *argv[])")
+autocmd BufNewFile *c call append(5,"{")
+autocmd BufNewFile *c call append(6,"  return 0;")
+autocmd BufNewFile *c call append(7,"}")
+
 
 "Use TAB to complete when typing words, else inserts TABs as usual.
 "Uses dictionary and source files to find matching words to complete.
