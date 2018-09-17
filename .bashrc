@@ -10,6 +10,7 @@ export EDITOR=vim
 # Aliases
 alias ls='ls --color'
 alias grep='grep --color -n'
+alias cmakefile='/home/samy.hussaein/afs/makefile.sh'
 
 LS_COLORS="di=1;31"
 export LS_COLORS
