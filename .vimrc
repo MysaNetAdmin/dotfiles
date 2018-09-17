@@ -16,7 +16,8 @@ syntax on
 
 " All of your Plugins must be added before the following line
 " call vundle#end()            " required
-filetype plugin indent on    " required for plugins
+
+filetype plugin indent on
 
 " configure tab to be 2 spaces
 set tabstop=2
@@ -29,7 +30,6 @@ set autoindent
 set cindent
 set shiftround
 set copyindent
-
 
 set number
 set mouse=a
@@ -49,10 +49,9 @@ imap <C-z> <Esc>ui
 autocmd BufNewFile *.sh norm i#!/bin/sh
 
 " Automatically include default libs and main for .c files
-autocmd BufNewFile *c call append(0,"# include <stdio.h>")
-autocmd BufNewFile *c call append(1,"# include <stdlib.h>")
+autocmd BufNewFile *c call append(0,"#include <stdio.h>")
+autocmd BufNewFile *c call append(1,"#include <stdlib.h>")
 autocmd BufNewFile *c call append(2,"")
-autocmd BufNewFile *c call append(3,"")
 autocmd BufNewFile *c call append(4,"int main(int argc, char *argv[])")
 autocmd BufNewFile *c call append(5,"{")
 autocmd BufNewFile *c call append(6,"  return 0;")
