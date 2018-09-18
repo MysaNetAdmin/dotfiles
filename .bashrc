@@ -18,4 +18,4 @@ export LS_COLORS
 # Stored old PS1 in case I might want it
 # PS1='[\u@\h \W]\$ '
 
-PS1='[mysa: \w]\$ '
+PS1='mysa: \w \$ '
