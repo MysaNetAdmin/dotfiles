@@ -2,7 +2,7 @@
 
 IMAGE=/tmp/i3lock.png
 SCREENSHOT="scrot $IMAGE"
-BLURTYPE="8x8"
+BLURTYPE="10x10"
 
 # Get the screenshot, add the blur and lock the screen with it
 $SCREENSHOT
