@@ -1,21 +1,29 @@
-" .vimrc
-
 " set the runtime path to include Vundle and initialize
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 set encoding=utf-8 fileencodings=
 syntax on
 
 " let Vundle manage Vundle, required
-" Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " plungin vim-sensible
-" Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-sensible'
 
+" plugin scrooloose/nerdtree
+Plugin 'scrooloose/nerdtree'
+
+" plugin ajmwagar/vim-deus
+Plugin 'ajmwagar/vim-deus'
+
+" plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
-" call vundle#end()            " required
+call vundle#end()            " required
+
+colorscheme deus
 
 filetype plugin indent on
 
@@ -51,11 +59,6 @@ autocmd BufNewFile *.sh norm i#!/bin/sh
 " Automatically include default libs and main for .c files
 autocmd BufNewFile *c call append(0,"#include <stdio.h>")
 autocmd BufNewFile *c call append(1,"#include <stdlib.h>")
-autocmd BufNewFile *c call append(2,"")
-autocmd BufNewFile *c call append(4,"int main(int argc, char *argv[])")
-autocmd BufNewFile *c call append(5,"{")
-autocmd BufNewFile *c call append(6,"  return 0;")
-autocmd BufNewFile *c call append(7,"}")
 
 
 "Use TAB to complete when typing words, else inserts TABs as usual.
