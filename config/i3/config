@@ -160,4 +160,4 @@ bindsym F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 
-bindsym $mod+l exec sh /home/samy.hussaein/.config/i3/i3lock.sh
+bindsym $mod+l exec sh /home/mysa/.config/i3/i3lock.sh
