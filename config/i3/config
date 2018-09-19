@@ -4,7 +4,7 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-exec_always --no-startup-id feh --randomize --bg-scale /afs/cri.epita.net/user/s/sa/samy.hussaein/u/Images/*
+exec_always --no-startup-id feh --randomize --bg-scale /home/mysa/Images/*
 # WARNING
 # WARNING: This configuration file is a template for the i3-config-wizard to
 # WARNING: generate a config which uses keysyms in your current layout. It does
@@ -40,7 +40,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+Q kill
+bindsym $mod+Shift+A kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
