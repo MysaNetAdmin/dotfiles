@@ -161,3 +161,6 @@ bindsym F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 
 bindsym $mod+l exec sh /home/mysa/.config/i3/i3lock.sh
+
+# Disable the mouse track to prevent from changning windows focus while moving the mouse by mistake
+focus_follows_mouse no
