@@ -3,7 +3,7 @@
 filename=Makefile
 
 if [ -e $filename ] ; then
-  echo "Makefile already exists" >&2
+  echo "A Makefile already exists" >&2
   exit 1
 fi
 
@@ -15,11 +15,12 @@ SRC=""
 
 for file in *.c ; do
   if [ -f $file ] ; then
+    SRC+= " "
     SRC+="$file"
   fi
 done
 
-echo "SRC= $SRC" >> $filename
+echo "SRC=$SRC" >> $filename
 echo "OBJ= \${SRC:.c=.o}" >> $filename
 echo "" >> $filename
 
