@@ -15,8 +15,7 @@ SRC=""
 
 for file in *.c ; do
   if [ -f $file ] ; then
-    SRC+= " "
-    SRC+="$file"
+    SRC+=" $file"
   fi
 done
 
