@@ -1,24 +1,26 @@
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" .vimrc
 
 set encoding=utf-8 fileencodings=
 syntax on
 
-" let Vundle manage Vundle, required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" plugin manager
 Plugin 'VundleVim/Vundle.vim'
 
 " plungin vim-sensible
 Plugin 'tpope/vim-sensible'
 
-" plugin scrooloose/nerdtree
+" nerdtree plugin to change and open files inside vim
 Plugin 'scrooloose/nerdtree'
 
-" plugin ajmwagar/vim-deus
+" deus colorscheme plugin
 Plugin 'ajmwagar/vim-deus'
 
-" plugin 'Valloric/YouCompleteMe'
-" Plugin 'Valloric/YouCompleteMe'
+" autocompletion plugin
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,25 +55,17 @@ imap <C-y> <Esc>ddi
 map <C-z> <Esc>
 imap <C-z> <Esc>ui
 
-" Automatically include "#!/bin/sh" in .sh files
+" Automatically add "#!/bin/sh" in shell scripts
 autocmd BufNewFile *.sh norm i#!/bin/sh
 
-" Automatically include default libs and main for .c files
-autocmd BufNewFile *c call append(0,"#include <stdio.h>")
-autocmd BufNewFile *c call append(1,"#include <stdlib.h>")
+" Automatically add default libs for C files
+autocmd BufNewFile *.c call append(0,"#include <stdio.h>")
+autocmd BufNewFile *.c call append(1,"#include <stdlib.h>")
 
-
-"Use TAB to complete when typing words, else inserts TABs as usual.
-"Uses dictionary and source files to find matching words to complete.
-function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-N>"
-  else
-    return "\<Tab>"
-  endif
-endfunction
-:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-:set dictionary="/usr/dict/words"
+" Automatically add empty header for header files
+autocmd BufNewFile *.h call append(0, "# ifndef")
+autocmd BufNewFile *.h call append(1, "# define")
+autocmd BufNewFile *.h call append(3, "# endif /*   */")
 
 " to respect EPITA coding style
 set list listchars=tab:»·,trail:·
