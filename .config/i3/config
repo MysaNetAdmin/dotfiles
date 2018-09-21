@@ -4,7 +4,7 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-exec_always --no-startup-id feh --randomize --bg-scale /afs/cri.epita.net/user/s/sa/samy.hussaein/u/Images/*
+exec_always --no-startup-id feh --randomize --bg-scale /home/samy.hussaein/Images/Wallpapers/*
 # WARNING
 # WARNING: This configuration file is a template for the i3-config-wizard to
 # WARNING: generate a config which uses keysyms in your current layout. It does
@@ -37,7 +37,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -161,3 +161,6 @@ bindsym F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 
 bindsym $mod+l exec sh /home/samy.hussaein/.config/i3/i3lock.sh
+
+# Disable the mouse track to prevent from changning windows focus while moving the mouse by mistake
+focus_follows_mouse no
