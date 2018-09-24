@@ -1,29 +1,40 @@
 " .vimrc
-
 set encoding=utf-8 fileencodings=
 syntax on
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.vim/bundle/plugged
+call plug#begin()
 
 " plugin manager
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
 " plungin vim-sensible
-Plugin 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 
 " nerdtree plugin to change and open files inside vim
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " deus colorscheme plugin
-Plugin 'ajmwagar/vim-deus'
+Plug 'ajmwagar/vim-deus'
 
 " autocompletion plugin
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
+
+" syntax checking hacks plugin
+" Plug 'scrooloose/syntastic'
+
+" status bar plugin
+Plug 'vim-airline/vim-airline'
+
+" pairs plugin
+Plug 'jiangmiao/auto-pairs'
+
+" trailing whitespaces plugin
+Plug 'ntpeters/vim-better-whitespace'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 
 colorscheme deus
 
@@ -43,6 +54,9 @@ set copyindent
 
 set number
 set mouse=a
+
+set undofile
+set undodir=~/.vim/undodir
 
 " Select all text
 nmap <C-a> ggVG
@@ -69,7 +83,9 @@ autocmd BufNewFile *.h call append(3, "# endif /*   */")
 
 " to respect EPITA coding style
 set list listchars=tab:»·,trail:·
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-highlight MaxLength ctermbg=red guibg=red
-2mat MaxLength /\%81v./
+let g:better_whitespace_enabled=1
+let g:better_whitespace_verbosity=1
+let g:show_spaces_that_precede_tabs=1
+highlight ExtraWhitespace ctermbg=red
+highlight OverLength ctermbg=red ctermfg=red guibg=red
+match OverLength /\%81v.\+/
