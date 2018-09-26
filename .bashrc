@@ -85,4 +85,4 @@ function parse_git_dirty
 }
 
 
-export PS1="\[\e[30;41m\]mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n\`nonzero_return\`>> "
+export PS1="\n\[\e[30;41m\]mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n\`nonzero_return\`>> "
