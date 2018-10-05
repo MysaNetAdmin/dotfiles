@@ -41,9 +41,9 @@ colorscheme deus
 filetype plugin indent on
 
 " configure tab to be 2 spaces
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 set smartindent
@@ -77,9 +77,9 @@ autocmd BufNewFile *.c call append(0,"#include <stdio.h>")
 autocmd BufNewFile *.c call append(1,"#include <stdlib.h>")
 
 " Automatically add empty header for header files
-autocmd BufNewFile *.h call append(0, "# ifndef")
+autocmd BufNewFile *.h call append(0, "#ifndef")
 autocmd BufNewFile *.h call append(1, "# define")
-autocmd BufNewFile *.h call append(3, "# endif /*   */")
+autocmd BufNewFile *.h call append(3, "#endif /*   */")
 
 " to respect EPITA coding style
 set list listchars=tab:»·,trail:·
