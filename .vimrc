@@ -22,7 +22,7 @@ Plug 'ajmwagar/vim-deus'
 Plug 'Valloric/YouCompleteMe'
 
 " syntax checking hacks plugin
-" Plug 'scrooloose/syntastic'
+" Plug 'vim-syntastic/syntastic'
 
 " status bar plugin
 Plug 'vim-airline/vim-airline'
@@ -70,22 +70,19 @@ map <C-z> <Esc>
 imap <C-z> <Esc>ui
 
 " Automatically add "#!/bin/sh" in shell scripts
-autocmd BufNewFile *.sh norm i#!/bin/sh
+autocmd BufNewFile *.sh call append(0, "#!/bin/sh")
 
 " Automatically add default libs for C files
 autocmd BufNewFile *.c call append(0,"#include <stdio.h>")
 autocmd BufNewFile *.c call append(1,"#include <stdlib.h>")
 
 " Automatically add empty header for header files
-autocmd BufNewFile *.h call append(0, "#ifndef")
-autocmd BufNewFile *.h call append(1, "# define")
-autocmd BufNewFile *.h call append(3, "#endif /*   */")
+autocmd BufNewFile *.h call append(0, "#pragma once")
 
 " to respect EPITA coding style
+set cc=81
 set list listchars=tab:»·,trail:·
 let g:better_whitespace_enabled=1
 let g:better_whitespace_verbosity=1
 let g:show_spaces_that_precede_tabs=1
 highlight ExtraWhitespace ctermbg=red
-highlight OverLength ctermbg=red ctermfg=red guibg=red
-match OverLength /\%81v.\+/
