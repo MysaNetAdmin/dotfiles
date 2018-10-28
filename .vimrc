@@ -30,6 +30,12 @@ Plug 'vim-airline/vim-airline'
 " pairs plugin
 Plug 'jiangmiao/auto-pairs'
 
+" snippet plugin
+Plug 'SirVer/ultisnips'
+
+" basic snippets
+Plug 'honza/vim-snippets'
+
 " trailing whitespaces plugin
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -40,7 +46,10 @@ colorscheme deus
 
 filetype plugin indent on
 
-" configure tab to be 2 spaces
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-tab>"
+
+" configure tab to be 4 spaces
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
