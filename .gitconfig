@@ -21,23 +21,11 @@
 	smtpuser = samy.hussaein@epita.fr
 [alias]
 		a = add *
-		cfna = config --global user.name
-		cfem = config --global user.email
 		st = status
 		re = remote
-		read = remote add
-		redel = remote rm
-		rena = remote rename
-		reur = remote set-url
-		dista = diff --staged
-		dica = diff --cached
-		dihe = diff HEAD
-		losh = shortlog
-		loshsn = shortlog -sn
 		lone = log --oneline
 		lonee = log --oneline --max-count=17
 		c = commit -m
-		oops = commit --amend --no-edit
 		ps = push
 		pl = pull
 		rsh = reset --hard
