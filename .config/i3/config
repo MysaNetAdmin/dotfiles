@@ -155,6 +155,8 @@ bar {
 	position top
 }
 
+new_window pixel 1
+
 bindsym F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
