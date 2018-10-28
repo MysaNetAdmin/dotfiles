@@ -9,13 +9,15 @@ export EDITOR=vim
 
 # Aliases
 alias ls='ls --color'
+alias ll='ls -al'
 alias grep='grep --color -n'
 alias cmk='$HOME/Desktop/makefile.sh'
 alias gdb='gdb -q'
 
+export PATH=$PATH:$HOME/.local/bin/
+
 LS_COLORS="di=1;33"
 export LS_COLORS
-
 
 # Color support for less
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -83,6 +85,5 @@ function parse_git_dirty
     echo ""
   fi
 }
-
 
 export PS1="\n\[\e[30;41m\]mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n\`nonzero_return\`>> "
