@@ -1,5 +1,10 @@
 #!/bin/bash
 
-IMAGE="$(find $HOME/Images/Lockscreen/  | sort -u | shuf -n1)"
+IMAGE=/tmp/i3lock.png
+SCREENSHOT="scrot $IMAGE"
+BLURTYPE="10x10"
 
-i3lock -i "$IMAGE" -e
+# Get the screenshot, add the blur and lock the screen with it
+$SCREENSHOT
+convert $IMAGE -blur $BLURTYPE $IMAGE
+i3lock -i $IMAGE -e
