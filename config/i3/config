@@ -4,7 +4,7 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-exec_always --no-startup-id feh --randomize --bg-scale /home/mysa/Images/*
+exec_always --no-startup-id feh --randomize --bg-scale $HOME/Pictures/Wallpapers/*
 # WARNING
 # WARNING: This configuration file is a template for the i3-config-wizard to
 # WARNING: generate a config which uses keysyms in your current layout. It does
@@ -37,8 +37,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
-
+bindsym $mod+Return exec urxvt
 # kill focused window
 bindsym $mod+Shift+A kill
 
@@ -151,16 +150,31 @@ mode "resize" {
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status --config /home/mysa/.config/i3/i3status.conf
+        status_command i3status --config $HOME/.config/i3/i3status.conf
 	position top
 }
 
-bindsym F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+#bindsym F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+#bindsym F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 
-bindsym $mod+l exec sh /home/mysa/.config/i3/i3lock.sh
+bindsym $mod+l exec sh $HOME/.config/i3/i3lock.sh
 
 # Disable the mouse track to prevent from changning windows focus while moving the mouse by mistake
 focus_follows_mouse no
