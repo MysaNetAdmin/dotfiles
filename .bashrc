@@ -31,12 +31,6 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 # Stored old PS1 in case I might want it
 # PS1='[\u@\h \W]\$ '
 
-function nonzero_return()
-{
-  RETVAL="$?"
-  [ $RETVAL -ne 0 ] && echo "$RETVAL"
-}
-
 # get current branch in git repo
 function parse_git_branch()
 {
@@ -86,4 +80,10 @@ function parse_git_dirty
   fi
 }
 
-export PS1="\n\[\e[30;41m\]mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n\`nonzero_return\`>> "
+export PS1="\n\[\e[30;41m\] Mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n>> "
+
+echo "Glad to see you Mysa"
+curl wttr.in/Paris > TMP_W 2> /dev/null
+sed -i '1s/.*/Here is the actual weather : /' TMP_W
+cat TMP_W | head -n 7
+rm TMP_W

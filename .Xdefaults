@@ -2,5 +2,6 @@
 URxvt.transparent:true
 URxvt.shading:10
 URxvt*scrollBar: false
-URxvt.font: xft:DejaVu Sans Mono:size=12
+URxvt.font: xft:DejaVu Sans Mono:size=9
 URxvt*foreground: #f2f2f2
+URxvt.cursorColor: #0077ff
