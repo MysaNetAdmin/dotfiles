@@ -22,7 +22,7 @@ Plug 'ajmwagar/vim-deus'
 Plug 'Valloric/YouCompleteMe'
 
 " syntax checking hacks plugin
-" Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " status bar plugin
 Plug 'vim-airline/vim-airline'
@@ -46,8 +46,26 @@ colorscheme deus
 
 filetype plugin indent on
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-tab>"
+" trigger the snippet
+let g:UltiSnipsExpandTrigger="<c-j>"
+
+nmap <F4> :NERDTreeToggle<CR>
+
+" For syntastic plugin
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:ycm_show_diagnostics_ui = 0
+
+" added options for C completion
+let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_compiler_options = '-Wall -Wextra -Werror -std=c99 -pedantic'
+let g:syntastic_c_check_header = 1
 
 " configure tab to be 4 spaces
 set tabstop=4
