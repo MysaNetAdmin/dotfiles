@@ -140,6 +140,7 @@ function parse_git_dirty
 
 export PS1="\n\[\e[30;41m\] Mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n>> "
 
+eval `ssh-agent -s` > /dev/null
 echo "Glad to see you Mysa"
 curl wttr.in/Paris > TMP_W 2> /dev/null
 sed -i '1s/.*/Here is the actual weather : /' TMP_W
