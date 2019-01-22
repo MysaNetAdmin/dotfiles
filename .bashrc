@@ -13,6 +13,7 @@ alias ll='ls -al'
 alias grep='grep --color -n'
 alias cmk='$HOME/Desktop/makefile.sh'
 alias gdb='gdb -q'
+alias gxx='g++ -Wall -Werror -Wextra -pedantic -std=c++17'
 
 export PATH=$PATH:$HOME/.local/bin/
 
@@ -88,3 +89,4 @@ curl wttr.in/Paris > TMP_W 2> /dev/null
 sed -i '1s/.*/Here is the actual weather : /' TMP_W
 cat TMP_W | head -n 7
 rm TMP_W
+ssh-add .ssh/git_perso 2> /dev/null

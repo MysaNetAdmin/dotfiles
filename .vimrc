@@ -89,14 +89,6 @@ set undodir=~/.vim/undodir
 " Select all text
 nmap <C-a> ggVG
 
-" normal copy/paste
-vmap <C-c> y<Esc>i
-vmap <C-x> d<Esc>i
-imap <C-v> <Esc>pi
-imap <C-y> <Esc>ddi
-map <C-z> <Esc>
-imap <C-z> <Esc>ui
-
 " Automatically add "#!/bin/sh" in shell scripts
 autocmd BufNewFile *.sh call append(0, "#!/bin/sh")
 
@@ -104,8 +96,11 @@ autocmd BufNewFile *.sh call append(0, "#!/bin/sh")
 autocmd BufNewFile *.c call append(0,"#include <stdio.h>")
 autocmd BufNewFile *.c call append(1,"#include <stdlib.h>")
 
+autocmd BufNewFile *.cc call append(0, "#include <iostream>")
+
 " Automatically add empty header for header files
 autocmd BufNewFile *.h call append(0, "#pragma once")
+autocmd BufNewFile *.hh call append(0, "#pragma once")
 
 " to respect EPITA coding style
 set cc=81
