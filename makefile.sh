@@ -7,8 +7,15 @@ if [ -e $filename ] ; then
   exit 1
 fi
 
+exe=main
+
+if [ $# -eq 1 ]; then
+    exe=$1
+fi
+
 echo "CXX= g++" >> $filename
-echo "CXXLAGS= -Wall -Wextra -Werror -pedantic -std=c++17" >> $filename
+echo "CXXLAGS= -Wall -Wextra -Werror -pedantic -std=c++17 -fsanitize=address" >> $filename
+echo "LDLIBS= asan" >> $filename
 echo "" >> $filename
 
 SRC=""
@@ -21,7 +28,7 @@ done
 
 echo "SRC=$SRC" >> $filename
 echo "OBJ= \${SRC:.cc=.o}" >> $filename
-echo "EXEC= main" >> $filename
+echo "EXEC= $exe" >> $filename
 echo "" >> $filename
 
 echo "all: \${EXEC}" >> $filename

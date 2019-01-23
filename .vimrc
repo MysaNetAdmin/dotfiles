@@ -62,10 +62,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:ycm_show_diagnostics_ui = 0
 
-" added options for C completion
-let g:syntastic_c_compiler = 'gcc'
-let g:syntastic_c_compiler_options = '-Wall -Wextra -Werror -std=c99 -pedantic'
-let g:syntastic_c_check_header = 1
+" added options for C++ completion
+let g:syntastic_cpp_compiler = 'gxx'
+let g:syntastic_cpp_compiler_options = '-Wall -Wextra -Werror -pedantic -std=c++17'
+let g:syntastic_cpp_check_header = 1
 
 " configure tab to be 4 spaces
 set tabstop=4
@@ -96,11 +96,10 @@ autocmd BufNewFile *.sh call append(0, "#!/bin/sh")
 autocmd BufNewFile *.c call append(0,"#include <stdio.h>")
 autocmd BufNewFile *.c call append(1,"#include <stdlib.h>")
 
-autocmd BufNewFile *.cc call append(0, "#include <iostream>")
-
 " Automatically add empty header for header files
 autocmd BufNewFile *.h call append(0, "#pragma once")
 autocmd BufNewFile *.hh call append(0, "#pragma once")
+autocmd BufNewFile *.hxx call append(0, "#pragma once")
 
 " to respect EPITA coding style
 set cc=81
