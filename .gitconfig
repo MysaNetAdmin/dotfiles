@@ -1,36 +1,36 @@
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 [color]
-	ui = auto
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+    ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 [commit]
-	verbose = true
+    verbose = true
 [pull]
-	rebase = true
+    rebase = true
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 [push]
-	default = simple
+    default = simple
 [sendemail]
-	smtpencryption = tls
-	smtpserver = smtp.office365.com
-	smtpserverport = 587
-	smtpuser = samy.hussaein@epita.fr
+    smtpencryption = tls
+    smtpserver = smtp.office365.com
+    smtpserverport = 587
+    smtpuser = samy.hussaein@epita.fr
 [alias]
-		a = add *
-		st = status
-		re = remote
-		lone = log --oneline
-		lonee = log --oneline --max-count=17
-		c = commit -m
-		ps = push
-		pl = pull
-		rsh = reset --hard
+    a = add *
+    st = status
+    re = remote
+    lone = log --oneline
+    lonee = log --oneline --max-count=17
+    c = commit -m
+    ps = push
+    pl = pull
+    rsh = reset --hard
 [credential]
-	helper = cache
+    helper = cache
 [user]
-	name = Samy Hussaein
-	email = samy.hussaein@epita.fr
+    name = Samy Hussaein
+    email = samy.hussaein@epita.fr

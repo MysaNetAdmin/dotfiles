@@ -41,10 +41,12 @@ colors() {
 
 # Aliases
 alias ls='ls --color'
-alias ll='ls -al'
+alias ll='ls -ag'
 alias grep='grep --color -n'
 alias cmk='$HOME/Desktop/makefile.sh'
 alias gdb='gdb -q'
+alias gxx='g++ -Wall -Werror -Wextra -pedantic -std=c++17'
+alias pjson='python -m json.tool'
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
@@ -141,8 +143,10 @@ function parse_git_dirty
 export PS1="\n\[\e[30;41m\] Mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n>> "
 
 eval `ssh-agent -s` > /dev/null
+ssh-add $HOME/.ssh/git_perso > /dev/null
+clear
 echo "Glad to see you Mysa"
-curl wttr.in/Paris > TMP_W 2> /dev/null
+curl wttr.in/ > TMP_W 2> /dev/null
 sed -i '1s/.*/Here is the actual weather : /' TMP_W
-cat TMP_W | head -n 7
+cat TMP_W | head -n 7 | lolcat
 rm TMP_W
