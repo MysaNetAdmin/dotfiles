@@ -14,7 +14,7 @@ if [ $# -eq 1 ]; then
 fi
 
 echo "CXX= g++" >> $filename
-echo "CXXLAGS= -Wall -Wextra -Werror -pedantic -std=c++17 -fsanitize=address" >> $filename
+echo "CXXFLAGS= -Wall -Wextra -Werror -pedantic -std=c++17 -fsanitize=address" >> $filename
 echo "LDLIBS= asan" >> $filename
 echo "" >> $filename
 
