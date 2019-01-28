@@ -46,10 +46,6 @@ alias grep='grep --color -n'
 alias cmk='$HOME/Desktop/makefile.sh'
 alias gdb='gdb -q'
 alias gxx='g++ -Wall -Werror -Wextra -pedantic -std=c++17'
-alias pjson='python -m json.tool'
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
 
 #
 # # ex - archive extractor
@@ -144,7 +140,7 @@ export PS1="\n\[\e[30;41m\] Mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \
 
 eval `ssh-agent -s` > /dev/null
 ssh-add $HOME/.ssh/git_perso > /dev/null
-clear
+reset
 echo "Glad to see you Mysa"
 curl wttr.in/ > TMP_W 2> /dev/null
 sed -i '1s/.*/Here is the actual weather : /' TMP_W
