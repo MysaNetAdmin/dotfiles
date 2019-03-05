@@ -13,8 +13,8 @@ if [ $# -eq 1 ]; then
     exe=$1
 fi
 
-echo "CXX= g++" >> $filename
-echo "CXXFLAGS= -Wall -Wextra -Werror -pedantic -std=c++17 -fsanitize=address" >> $filename
+echo "CXX= clang++" >> $filename
+echo "CXXLAGS= -Wall -Wextra -Werror -pedantic -std=c++17 -fsanitize=address" >> $filename
 echo "LDLIBS= asan" >> $filename
 echo "" >> $filename
 

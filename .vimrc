@@ -1,4 +1,4 @@
-" .vimrc
+:" .vimrc
 set encoding=utf-8 fileencodings=
 syntax on
 
@@ -11,9 +11,6 @@ Plug 'VundleVim/Vundle.vim'
 
 " plungin vim-sensible
 Plug 'tpope/vim-sensible'
-
-" nerdtree plugin to change and open files inside vim
-Plug 'scrooloose/nerdtree'
 
 " deus colorscheme plugin
 Plug 'ajmwagar/vim-deus'
@@ -48,8 +45,6 @@ filetype plugin indent on
 
 " trigger the snippet
 let g:UltiSnipsExpandTrigger="<c-j>"
-
-nmap <F4> :NERDTreeToggle<CR>
 
 " For syntastic plugin
 set statusline+=%#warningmsg#
@@ -102,6 +97,7 @@ autocmd BufNewFile *.hh call append(0, "#pragma once")
 autocmd BufNewFile *.hxx call append(0, "#pragma once")
 
 " to respect EPITA coding style
+highlight Error ctermfg=223
 set cc=81
 set list listchars=tab:»·,trail:·
 let g:better_whitespace_enabled=1

@@ -14,6 +14,7 @@ alias grep='grep --color -n'
 alias cmk='$HOME/Desktop/makefile.sh'
 alias gdb='gdb -q'
 alias gxx='g++ -Wall -Werror -Wextra -pedantic -std=c++17'
+alias code='~/Desktop/VSCode-linux-x64/code'
 
 export PATH=$PATH:$HOME/.local/bin/
 
@@ -31,6 +32,36 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # Stored old PS1 in case I might want it
 # PS1='[\u@\h \W]\$ '
+
+#   ---- ---- ---- ---- ---- ----    Colors:   ---- ---- ---- ---- ---- ----
+
+DEFAULT_COLOR="\e[39m"
+BLACK="\e[30m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+MAGENTA="\e[35m"
+CYAN="\e[36m"
+LIGHT_GRAY="\e[37m"
+DARK_GRAY="\e[90m"
+LIGHT_RED="\e[91m"
+LIGHT_GREEN="\e[92m"
+LIGHT_YELLOW="\e[93m"
+LIGHT_BLUE="\e[94m"
+LIGHT_MAGENTA="\e[95m"
+LIGHT_CYAN="\e[96m"
+WHITE="\e[97m"
+
+__get_last_exit_value() {
+    local exit_value="$?"
+    if [ $exit_value != 0 ]; then
+        exit_value="${RED}[${exit_value}]${DEFAULT_COLOR}"      # Add red if exit code non 0
+    else
+        exit_value="${LIGHT_GREEN}[${exit_value}]${DEFAULT_COLOR}"      # Add green if exit code is 0
+    fi
+    echo "$exit_value"
+}
 
 # get current branch in git repo
 function parse_git_branch()
@@ -81,7 +112,19 @@ function parse_git_dirty
   fi
 }
 
-export PS1="\n\[\e[30;41m\] Mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n>> "
+__get_PS1()
+{
+    local EXIT="$(__get_last_exit_value)" # Has to before any call to evaluate
+
+    PS1="\n${EXIT} "
+    PS1+="\[\e[30;41m\] Mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n>> "
+}
+
+__prompt_command() {
+    __get_PS1
+}
+
+PROMPT_COMMAND=__prompt_command # Gets called before initializing PSs
 
 clear
 echo "Glad to see you Mysa"
@@ -89,4 +132,3 @@ curl wttr.in/Paris > TMP_W 2> /dev/null
 sed -i '1s/.*/Here is the actual weather : /' TMP_W
 cat TMP_W | head -n 7
 rm TMP_W
-ssh-add .ssh/git_perso 2> /dev/null
