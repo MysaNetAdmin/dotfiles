@@ -49,6 +49,8 @@ filetype plugin indent on
 " trigger the snippet
 let g:UltiSnipsExpandTrigger="<c-j>"
 
+set path+=**
+
 nmap <F4> :NERDTreeToggle<CR>
 
 " For syntastic plugin
@@ -65,7 +67,7 @@ let g:ycm_show_diagnostics_ui = 0
 " added options for C++ errors checking
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-Wall -Wextra -Werror -pedantic -std=c++17'
-let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_check_header = 0
 
 " configure tab to be 4 spaces
 set tabstop=4

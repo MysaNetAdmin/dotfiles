@@ -1,6 +1,3 @@
-#
-# ~/.bashrc
-#
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -10,38 +7,9 @@ export NNTPSERVER="news.epita.fr"
 
 export EDITOR=vim
 
-colors() {
-	local fgc bgc vals seq0
-
-	printf "Color escapes are %s\n" '\e[${value};...;${value}m'
-	printf "Values 30..37 are \e[33mforeground colors\e[m\n"
-	printf "Values 40..47 are \e[43mbackground colors\e[m\n"
-	printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
-
-	# foreground colors
-	for fgc in {30..37}; do
-		# background colors
-		for bgc in {40..47}; do
-			fgc=${fgc#37} # white
-			bgc=${bgc#40} # black
-
-			vals="${fgc:+$fgc;}${bgc}"
-			vals=${vals%%;}
-
-			seq0="${vals:+\e[${vals}m}"
-			printf "  %-9s" "${seq0:-(default)}"
-			printf " ${seq0}TEXT\e[m"
-			printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
-		done
-		echo; echo
-	done
-}
-
-[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-
 # Aliases
 alias ls='ls --color'
-alias ll='ls -ag'
+alias ll='ls -al'
 alias grep='grep --color -n'
 alias cmk='$HOME/Desktop/makefile.sh'
 alias gdb='gdb -q'
@@ -71,6 +39,9 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+export PATH=$PATH:$HOME/.local/bin/
+export PGDATA="$HOME/postgres_data"
+export PGHOST="/tmp"
 
 LS_COLORS="di=1;33"
 export LS_COLORS
@@ -86,6 +57,36 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 # Stored old PS1 in case I might want it
 # PS1='[\u@\h \W]\$ '
+
+#   ---- ---- ---- ---- ---- ----    Colors:   ---- ---- ---- ---- ---- ----
+
+DEFAULT_COLOR="\e[39m"
+BLACK="\e[30m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+MAGENTA="\e[35m"
+CYAN="\e[36m"
+LIGHT_GRAY="\e[37m"
+DARK_GRAY="\e[90m"
+LIGHT_RED="\e[91m"
+LIGHT_GREEN="\e[92m"
+LIGHT_YELLOW="\e[93m"
+LIGHT_BLUE="\e[94m"
+LIGHT_MAGENTA="\e[95m"
+LIGHT_CYAN="\e[96m"
+WHITE="\e[97m"
+
+__get_last_exit_value() {
+    local exit_value="$?"
+    if [ $exit_value != 0 ]; then
+        exit_value="${RED}[${exit_value}]${DEFAULT_COLOR}"      # Add red if exit code non 0
+    else
+        exit_value="${LIGHT_GREEN}[${exit_value}]${DEFAULT_COLOR}"      # Add green if exit code is 0
+    fi
+    echo "$exit_value"
+}
 
 # get current branch in git repo
 function parse_git_branch()
@@ -136,13 +137,25 @@ function parse_git_dirty
   fi
 }
 
-export PS1="\n\[\e[30;41m\] Mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n>> "
+__get_PS1()
+{
+    local EXIT="$(__get_last_exit_value)" # Has to before any call to evaluate
+
+    PS1="\n${EXIT} "
+    PS1+="\[\e[30;41m\] Mysa \[\e[m\]\[\e[31;42m\]▶\[\e[m\]\[\e[30;42m\] \[\e[m\]\[\e[30;42m\]\W\[\e[m\]\[\e[42m\] \[\e[m\]\[\e[32;43m\]▶\[\e[m\]\[\e[43m\] \[\e[m\]\[\e[30;43m\]\`parse_git_branch\`\[\e[m\]\n>> "
+}
+
+__prompt_command() {
+    __get_PS1
+}
+
+PROMPT_COMMAND=__prompt_command # Gets called before initializing PSs
 
 eval `ssh-agent -s` > /dev/null
 ssh-add $HOME/.ssh/git_perso > /dev/null
 reset
 echo "Glad to see you Mysa"
-curl wttr.in/ > TMP_W 2> /dev/null
+curl wttr.in/Paris > TMP_W 2> /dev/null
 sed -i '1s/.*/Here is the actual weather : /' TMP_W
-cat TMP_W | head -n 7 | lolcat
+cat TMP_W | head -n 7
 rm TMP_W
