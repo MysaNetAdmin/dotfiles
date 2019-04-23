@@ -20,15 +20,15 @@
 	smtpserverport = 587
 	smtpuser = samy.hussaein@epita.fr
 [alias]
-		a = add *
-		st = status
-		re = remote
-		lone = log --oneline
-		lonee = log --oneline --max-count=17
-		c = commit -m
-		ps = push
-		pl = pull
-		rsh = reset --hard
+	a = add *
+	st = status
+	re = remote
+	lone = log --oneline
+	lonee = log --oneline --max-count=17
+	c = commit -m
+	ps = push origin master --tags
+	pl = pull
+	rsh = reset --hard
 [credential]
 	helper = cache
 [user]
